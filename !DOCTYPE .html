@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiver Maker</title>
+
+  <!-- Open Graph / Discord embed meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quiver Maker - Made by Alex">
+  <meta property="og:description" content="Randomize all item_apple entries with random items and download modified JSON. Support Alex_shorts with quest cash!">
+  <meta property="og:image" content="https://github.com/Alex9799865/json-s/blob/main/image.png?raw=true">
+  <meta property="og:url" content="https://12a7f3f5-5ca6-41b1-8c10-72099cf17c7e-00-rasy803uhpyk.kirk.replit.dev/">
+  <meta property="og:site_name" content="Quiver Maker">
+
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quiver Maker - Made by Alex">
+  <meta name="twitter:description" content="Randomize all item_apple entries with random items and download modified JSON. Support Alex_shorts with quest cash!">
+  <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/1345426578850451490/1392202225970974800/image.png?ex=686eacdc&is=686d5b5c&hm=87236e4f058ee173f2d076b6dd63f0a22d3a0b4908f7e003018c7a6c3ce38696&">
+
+  <!-- Additional meta tags -->
+  <meta name="description" content="Quiver Maker by Alex - Randomize item_apple entries and download JSON files">
+  <meta name="author" content="Alex">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #121212;
+      color: #fff;
+      padding: 30px;
+    }
+    button {
+      font-size: 18px;
+      padding: 12px 24px;
+      background-color: #6a1b9a;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8e24aa;
+    }
+    audio {
+      display: none;
+    }
+
+    .rainbow-text {
+      background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: rainbow 3s ease-in-out infinite;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="rainbow-text">Made by Alex</div>
+
+  <div style="margin-bottom: 20px; padding: 15px; background-color: rgba(50, 50, 50, 0.3); border-radius: 8px; border-left: 4px solid #6a1b9a;">
+    <h3 style="margin: 0 0 10px 0; color: #fff; font-size: 18px;">📋 Update Notes</h3>
+    <div style="color: #ccc; font-size: 14px;">
+      <strong>Latest:</strong> Added robo monke
+    </div>
+  </div>
+
+  <label for="bgMusicUpload">🎵 Upload background music (MP3):</label>
+  <input type="file" id="bgMusicUpload" accept="audio/mpeg" />
+
+  <!-- ✅ Audio Player with Random Track Rotation -->
+  <audio id="backgroundMusic" autoplay muted>
+  </audio>
+
+  <button onclick="startAudio()">🔊 Unmute Music</button>
+  <h1>Randomize All "item_apple"</h1>
+  <p>Click the button to replace all <code>item_apple</code> with random items and download the modified JSON.</p>
+  <button id="randomizeBtn">✅ Download randomized quiver json</button>
+
+  <div style="margin-top: 30px; padding: 20px; background-color: rgba(100, 50, 200, 0.2); border-radius: 10px;">
+    <p style="margin-bottom: 15px; font-size: 16px;">💰 Support me by sending quest cash to <strong>Alex_shorts</strong></p>
+    <button id="moneyQuiverBtn" style="background-color: #28a745; color: white; font-size: 16px;">💸 Download Money Quiver JSON</button>
+  </div>
+
+  <script>
+    const makerData = {
+  "itemID": "item_backpack_large_base",
+  "colorHue": 161,
+  "scaleModifier": 127,
+  "children": [
+    {
+      "itemID": "item_heart_gun",
+      "colorHue": 161,
+      "scaleModifier": 127,
+      "children": [
+        {
+          "itemID": "item_quiver",
+          "colorHue": 150,
+          "scaleModifier": 127,
+          "children": [
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "itemID": "item_heart_gun",
+      "colorHue": 161,
+      "scaleModifier": 127,
+      "children": [
+        {
+          "itemID": "item_quiver",
+          "colorHue": 149,
+          "scaleModifier": 127,
+          "children": [
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "itemID": "item_heart_gun",
+      "colorHue": 161,
+      "scaleModifier": 127,
+      "children": [
+        {
+          "itemID": "item_quiver",
+          "colorHue": 149,
+          "scaleModifier": 127,
+          "children": [
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 149,
+              "colorSaturation": 31
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "itemID": "item_heart_gun",
+      "colorHue": 161,
+      "scaleModifier": 127,
+      "children": [
+        {
+          "itemID": "item_quiver",
+          "colorHue": 149,
+          "scaleModifier": 127,
+          "children": [
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            },
+            {
+              "itemID": "item_apple",
+              "colorHue": 34,
+              "colorSaturation": 31
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+    const econItems = ["item_anti_gravity_grenade","item_arena_pistol","item_arena_shotgun","item_arrow","item_arrow_bomb","item_arrow_heart","item_arrow_lightbulb","item_arrow_teleport","item_backpack","item_backpack_black","item_backpack_green","item_backpack_large_base","item_backpack_large_basketball","item_backpack_large_clover","item_backpack_pink","item_backpack_small_base","item_backpack_white","item_backpack_with_flashlight","item_balloon","item_balloon_heart","item_banana","item_baseball_bat","item_big_cup","item_boombox","item_boombox_neon","item_box_fan","item_brain_chunk","item_broccoli_grenade","item_broccoli_shrink_grenade","item_calculator","item_cardboard_box","item_cash","item_cash_mega_pile","item_cash_pile","item_ceo_plaque","item_clapper","item_cluster_grenade","item_cola","item_cola_large","item_company_ration","item_company_ration_heal","item_cracker","item_crate","item_crossbow","item_crossbow_heart","item_crowbar","item_d20","item_disc","item_disposable_camera","item_drill","item_dynamite","item_dynamite_cube","item_egg","item_electrical_tape","item_eraser","item_finger_board","item_flaregun","item_flashbang","item_flashlight","item_flashlight_mega","item_flashlight_red","item_floppy3","item_floppy5","item_football","item_frying_pan","item_gameboy","item_glowstick","item_goldbar","item_goldcoin","item_grenade","item_grenade_gold","item_harddrive","item_hawaiian_drum","item_heart_chunk","item_heart_gun","item_heartchocolatebox","item_hh_key","item_hookshot","item_hookshot_sword","item_hoverpad","item_impulse_grenade","item_jetpack","item_keycard","item_lance","item_landmine","item_large_banana","item_mug","item_nut","item_nut_drop","item_ogre_hands","item_ore_copper_l","item_ore_copper_m","item_ore_copper_s","item_ore_gold_l","item_ore_gold_m","item_ore_gold_s","item_ore_hell","item_ore_silver_l","item_ore_silver_m","item_ore_silver_s","item_painting_canvas","item_paperpack","item_pelican_case","item_pickaxe","item_pickaxe_cny","item_pickaxe_cube","item_pinata_bat","item_pipe","item_plunger","item_pogostick","item_police_baton","item_portable_teleporter","item_pumpkin_pie","item_pumpkinjack","item_pumpkinjack_small","item_quiver","item_quiver_heart","item_radioactive_broccoli","item_randombox_mobloot_big","item_randombox_mobloot_medium","item_randombox_mobloot_small","item_randombox_mobloot_weapons","item_randombox_mobloot_zombie","item_rare_card","item_revolver","item_revolver_ammo","item_revolver_gold","item_rope","item_rpg","item_rpg_ammo","item_rpg_ammo_egg","item_rpg_ammo_spear","item_rpg_cny","item_rpg_easter","item_rpg_spear","item_rubberducky","item_ruby","item_saddle","item_robo_monke","item_scanner","item_scissors","item_server_pad","item_shield","item_shield_bones","item_shield_police","item_shield_viking_1","item_shield_viking_2","item_shield_viking_3","item_shield_viking_4","item_shotgun","item_shotgun_ammo","item_shredder","item_shrinking_broccoli","item_snowball","item_stapler","item_stash_grenade","item_stick_armbones","item_stick_bone","item_sticker_dispenser","item_sticky_dynamite","item_stinky_cheese","item_tablet","item_tapedispenser","item_tele_grenade","item_teleport_gun","item_theremin","item_timebomb","item_toilet_paper","item_toilet_paper_mega","item_toilet_paper_roll_empty","item_treestick","item_tripwire_explosive","item_trophy","item_turkey_leg","item_turkey_whole","item_ukulele","item_ukulele_gold","item_umbrella","item_umbrella_clover","item_unidentified","item_upsidedown_loot","item_uranium_chunk_l","item_uranium_chunk_m","item_uranium_chunk_s","item_viking_hammer","item_viking_hammer_twilight","item_whoopie","item_zipline_gun","item_zombie_meat"];
+
+  function getRandomItemID() {
+    return econItems[Math.floor(Math.random() * econItems.length)];
+  }
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function randomizeAndDownload() {
+    const modified = JSON.parse(JSON.stringify(makerData));
+
+    function traverse(node) {
+      if (node.itemID === "item_apple") {
+        // Ensure truly random item selection
+        node.itemID = getRandomItemID();
+
+        // Wider range for better color variety (0-360 covers full hue spectrum)
+        node.colorHue = getRandomInt(0, 240);
+
+        // Full saturation range for more vibrant colors
+        node.colorSaturation = getRandomInt(-124, 124);
+
+
+        // Full scale range for size variety
+        node.scaleModifier = getRandomInt(-127, 127);
+
+        // Add random state and ammo for additional variation
+        node.state = getRandomInt(0, 8000);
+        node.ammo = getRandomInt(0, 10);
+      }
+
+      if (node.itemID === "item_quiver") {
+        // Randomize quiver colors too
+        node.colorHue = getRandomInt(0, 240);
+        node.colorSaturation = getRandomInt(-124, 124);
+        node.scaleModifier = getRandomInt(-127, 127);
+      }
+
+      if (node.itemID === "item_backpack_large_base") {
+        // Randomize backpack colors and scale
+        node.colorHue = getRandomInt(0, 240);
+        node.colorSaturation = getRandomInt(-124, 124);
+        node.scaleModifier = getRandomInt(-127, 127);
+      }
+
+      if (Array.isArray(node.children)) {
+        node.children.forEach(traverse);
+      }
+    }
+
+    traverse(modified);
+
+    const blob = new Blob([JSON.stringify(modified, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = '99 444 Maker (Randomized).json';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+    document.getElementById('randomizeBtn').addEventListener('click', randomizeAndDownload);
+
+    // Money Quiver JSON data
+    const moneyQuiverData = {
+    "itemID": "item_backpack_large_base",
+    "colorHue": 159,
+    "colorSaturation": 120,
+    "scaleModifier": 0,
+    "state": 0,
+    "children": [
+      {
+        "itemID": "item_heart_gun",
+        "colorHue": 159,
+        "colorSaturation": 120,
+        "scaleModifier": 0,
+        "state": 0,
+        "children": [
+          {
+            "itemID": "item_backpack_large_base",
+            "colorHue": 159,
+            "colorSaturation": 120,
+            "scaleModifier": 0,
+            "state": 0,
+            "children": [
+              {
+                "itemID": "item_heart_gun",
+                "colorHue": 159,
+                "colorSaturation": 120,
+                "scaleModifier": 0,
+                "state": 0,
+                "children": [
+                  {
+                    "itemID": "item_quiver",
+                    "colorHue": 159,
+                    "colorSaturation": 120,
+                    "scaleModifier": 0,
+                    "state": 0,
+                    "children": [
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      },
+                      {
+                        "itemID": "item_cash",
+                        "colorHue": 159,
+                        "colorSaturation": 120,
+                        "scaleModifier": 0,
+                        "state": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  };
+
+    // Money Quiver download function
+    function downloadMoneyQuiver() {
+      const blob = new Blob([JSON.stringify(moneyQuiverData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'money_quiver.json';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);    }
+
+    // Add money quiver button event listener
+    document.getElementById('moneyQuiverBtn').addEventListener('click', downloadMoneyQuiver);
+
+    // 🎵 Music tracks for sequential rotation
+    const musicTracks = [
+      "https://github.com/Alex9799865/json-s/raw/refs/heads/main/OnlyUpEgypt.mp3",
+      "https://github.com/Alex9799865/json-s/raw/refs/heads/main/OnlyUpVictory.mp3",
+      "https://github.com/Alex9799865/json-s/raw/refs/heads/main/x1_forest_loop%20(1).mp3",
+      "https://github.com/Alex9799865/json-s/raw/refs/heads/main/Animal%20Company%20OST%20-%20Lava%20Theme(Stereo%20Remastered).mp3",
+      "https://github.com/Alex9799865/json-s/raw/refs/heads/main/Animal%20Company%20OST%20-%20Mining%20Theme%20(All%20OSTs%20Playlist%20in%20desc).mp3",
+      "https://github.com/Alex9799865/json-s/raw/refs/heads/main/Animal%20Company%20OST%20-%20Realization(Arena%20Loading%20Theme)%20%5BStereo%20Remastered%5D.mp3"
+    ];
+
+    let currentTrackIndex = 0;
+    const audio = document.getElementById('backgroundMusic');
+    let isUserInteracted = false;
+
+    // Function to play the next track in sequence
+    function playNextTrack() {
+      audio.src = musicTracks[currentTrackIndex];
+      audio.load(); // Ensure the audio is loaded
+
+      if (isUserInteracted) {
+        audio.play().catch(err => {
+          console.warn("Play error:", err.message);
+        });
+      }
+
+      // Move to next track, loop back to start if at end
+      currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
+    }
+
+    // Function to start audio (for unmute button)
+    window.startAudio = function() {
+      isUserInteracted = true;
+      audio.muted = false;
+      audio.volume = 0.5;
+
+      if (!audio.src) {
+        playNextTrack();
+      } else {
+        audio.play().catch(err => {
+          console.warn("Play error:", err.message);
+        });
+      }
+    }
+
+    // When a song ends, play the next track
+    audio.addEventListener('ended', playNextTrack);
+
+    // Set up initial track but don't autoplay
+    window.addEventListener('DOMContentLoaded', () => {
+      audio.volume = 0.5;
+      playNextTrack();
+    });
+
+    // 🛠 Replace default audio with user-uploaded file
+    document.getElementById("bgMusicUpload").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const audio = document.getElementById("backgroundMusic");
+      const objectURL = URL.createObjectURL(file);
+      audio.src = objectURL;
+      audio.muted = false;
+      audio.play().catch(err => {
+        console.warn("Play error:", err);
+      });
+    });
+  </script>
+</body>
+</html>
